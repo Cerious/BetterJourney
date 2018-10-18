@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'static_pages/google'
   get 'google/authenticated'
   get 'hikes/index'
+  get 'google/oauth2callback'
 
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
