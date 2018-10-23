@@ -1,15 +1,15 @@
-=begin
-require 'google/apis/people_v1'
-require 'client_secrets'
+class Contacts
+  include HTTParty
+  base_uri 'api.stackexchange.com'
 
-client_secrets = Google::APIClient::ClientSecrets.load
-auth_client = client_secrets.to_authorization
-auth_client.update!(
-  :scope => 'https://www.googleapis.com/auth/contacts.readonly',
-  :redirect_uri => 'http://localhost:3000',
-  :additional_parameters => {
-    "access_type" => "offline",         # offline access
-    "include_granted_scopes" => "true"  # incremental auth
-  }
-)
-=end
+  def initialize(service, page, token)
+    @options = { query: { site: service, page: page } }
+    @token = token
+  end
+
+  def init()
+  end
+
+  def list()
+  end
+end

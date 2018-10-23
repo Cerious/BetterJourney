@@ -2,6 +2,9 @@ require 'google/apis/drive_v2'
 require 'google/api_client/client_secrets'
 
 class Drive
+
+  def init(token)
+  end
   def get_drive_files
 
     enable :sessions

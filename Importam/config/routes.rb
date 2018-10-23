@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'google/help'
   get 'static_pages/help'
   get 'static_pages/google'
-  get 'google/authenticated'
+  get 'google/authenticate'
   get 'hikes/index'
   get 'google/oauth2callback'
 
