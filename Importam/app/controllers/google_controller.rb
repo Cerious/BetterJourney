@@ -11,18 +11,19 @@ class GoogleController < ApplicationController
     response = HTTParty.post('https://accounts.google.com/o/oauth2/token',  body: { client_id: ENV["GOOGLEID"], client_secret: ENV["GOOGLESECRET"], code: params['code'], grant_type: 'authorization_code', redirect_uri: 'http://localhost:3000/google/oauth2callback', scope: params['scope'] }, headers: { 'Accept' => 'application/json' } )
     Rails.logger.info response
     access_token = response["access_token"]
+    #here we pass the access_token to a new Contacts object in order to get the contacts list response
+=begin
     response = HTTParty.get("https://people.googleapis.com/v1/people/me/connections",
-  query: { personFields: "names,emailAddresses" },
-  headers: {
-    "Authorization" => "Bearer #{access_token}",
-    "Accept" => "application/json"
-   }
-)
+                  query: { personFields: "names,emailAddresses" },
+                  headers: {
+                    "Authorization" => "Bearer #{access_token}",
+                    "Accept" => "application/json"
+                  }
+                )
+=end
+    person = Contacts.new(1, access_token)
+    response = person.contactsList
     Rails.logger.info response
-    #contacts = Contacts.new(access_token)
-    #contacts.list
-
-
   end
 
   def authenticate
