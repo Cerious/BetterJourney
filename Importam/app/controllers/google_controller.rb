@@ -14,14 +14,14 @@ class GoogleController < ApplicationController
     #here we pass the access_token to a new Contacts object in order to get the contacts list response
 =begin
     response = HTTParty.get("https://people.googleapis.com/v1/people/me/connections",
-                  query: { personFields: "names,emailAddresses" },
+                  query: { personFields: "names,emailAddresses", pageSize: 1},
                   headers: {
                     "Authorization" => "Bearer #{access_token}",
                     "Accept" => "application/json"
                   }
                 )
 =end
-    person = Contacts.new(1, access_token)
+    person = Contacts.new(2, access_token)
     response = person.contactsList
     Rails.logger.info response
   end

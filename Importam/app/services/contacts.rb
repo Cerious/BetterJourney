@@ -14,7 +14,7 @@ class Contacts
 
   def contactsList
     HTTParty.get("https://people.googleapis.com/v1/people/me/connections",
-      query: { personFields: "names,emailAddresses" },
+      query: { personFields: "names,emailAddresses", pageSize: @page },
       headers: {
         "Authorization" => "Bearer #{@token}",
         "Accept" => "application/json"
