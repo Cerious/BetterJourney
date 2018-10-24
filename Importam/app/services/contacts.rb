@@ -1,15 +1,20 @@
 class Contacts
   include HTTParty
-  base_uri 'api.stackexchange.com'
+  base_uri 'https://people.googleapis.com'
 
-  def initialize(service, page, token)
-    @options = { query: { site: service, page: page } }
+  def initialize(personFields, page, token)
+    @options = { query: { personFields: personFields,  } }
+    @page = page
     @token = token
   end
 
-  def init()
-  end
-
-  def list()
+  def list(token)
+    HTTParty.get("/v1/people/me/connections",
+      query: { personFields: "names,emailAddresses" },
+      headers: {
+        "Authorization" => "Bearer #{token}",
+        "Accept" => "application/json"
+      }
+    )
   end
 end
