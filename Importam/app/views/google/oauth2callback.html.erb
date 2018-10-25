@@ -1,18 +1,10 @@
-<h1>Response</h1>
+<h1>Your Contacts</h1>
   <h2>
+    <%for i in @response['connections']%>
+      <h2>
+        <%=i['names'][0]['displayName']%>:
+            <%=i['emailAddresses'][0]['value']%>
+      </h2>
 
-    <%= @response['connections'][0]['names'][0]['displayName']%>
-    : <%=@response['connections'][0]['emailAddresses'][0]['value']%>
-  </h2>
-  <h2>
-    <%=@response['connections'][1]['names'][0]['displayName']%>
-    : <%=@response['connections'][1]['emailAddresses'][0]['value']%>
-  </h2>
-  <h2>
-    <%= @response['connections'].size%>
-  </h2>
-  <h2>
-    <%for i in 1..12%>
-      <%=i%>
     <%end%>
   </h2>
