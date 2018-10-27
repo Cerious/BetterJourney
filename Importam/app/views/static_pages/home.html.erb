@@ -5,7 +5,7 @@
     Please import your Google Contacts!
   </h2>
   <h2>
-    <%= form_tag(google_oauth2callback_path, method: "post") do %>
+    <%= form_tag(google_import_path, method: "get") do %>
     <%= label_tag(:q, "Page Size:") %>
     <%= number_field(:product, :price, in: 1.0..1000.0, step: 1) %>
     <%= submit_tag("Enter") %>

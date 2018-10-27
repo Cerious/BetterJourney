@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
 
   def google
   end
-  
+
   def help
   end
 end

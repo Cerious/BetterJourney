@@ -1,0 +1,9 @@
+<h1>Person Test</h1>
+<h2>
+  <%= form_for @person.update, url: {action: "create"} do |person_form| %>
+  <%= person_form.text_field :name %>
+  <%= fields_for @person.update.contact_detail do |contact_detail_form| %>
+    <%= contact_detail_form.text_field :phone_number %>
+  <% end %>
+<% end %>
+</h2>

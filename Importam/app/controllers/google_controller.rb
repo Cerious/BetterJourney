@@ -1,6 +1,8 @@
 class GoogleController < ApplicationController
 
   def import
+    num = params[:product][:price]
+    @number =  num.to_i
   end
 
   def help
