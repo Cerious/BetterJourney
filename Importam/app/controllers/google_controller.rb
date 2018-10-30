@@ -1,18 +1,19 @@
 class GoogleController < ApplicationController
 
   def import
-    num = params[:product][:price]
-    @number =  num.to_i
+    @@num = Number.new(params[:product][:price])
+    @num1 = @@num.retrn
   end
 
   def help
+    @num2 = @@num.retrn
   end
 
   def oauth2callback
     response = HTTParty.post('https://accounts.google.com/o/oauth2/token',  body: { client_id: ENV["GOOGLEID"], client_secret: ENV["GOOGLESECRET"], code: params['code'], grant_type: 'authorization_code', redirect_uri: 'http://localhost:3000/google/oauth2callback', scope: params['scope'] }, headers: { 'Accept' => 'application/json' } )
     access_token = response["access_token"]
     @response = Contacts.new(3, access_token).contactsList
-    @number = params[:product][:price] 
+    @number = params[:product][:price]
     return @response
   end
 
