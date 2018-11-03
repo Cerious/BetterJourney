@@ -5,7 +5,7 @@ describe GoogleController do
     
     describe "Token response" do
         it "is not empty" do
-            expect(access_token).to != None
+            expect(access_token).not_to be nil
     end
 
 end
