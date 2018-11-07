@@ -12,5 +12,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   
   config.expose_dsl_globally = true
+
+  config.infer_spec_type_from_file_location!
   end
 end
