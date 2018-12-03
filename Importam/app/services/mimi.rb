@@ -2,7 +2,7 @@ require 'httparty'
 require 'json'
 class SubberTool
     BASE_URL = 'https://madmimi.com:443'
-    CREDS = 'https://api.madmimi.com/promotions?username=justin@mybetterjourney.com&api_key=nr;Uq6qKY8AhjTm'
+    CREDS = "https://api.madmimi.com/promotions?username=#{ENV['MIMIUSRNAME']}&api_key=#{ENV['MIMIKEY']}"
     
     def add_sub
         HTTParty.get(CREDS)
